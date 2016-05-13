@@ -1,13 +1,13 @@
 ## R Programming Assignment 2: Lexical Scoping
 
-Dr. Peng noted that Matrix inversion can be a tedious computation but there can 
-be some benefit to caching the inverse of a matrix instead of 
-computing it repeatedly.
+##Dr. Peng noted that Matrix inversion can be a tedious computation but there can 
+##be some benefit to caching the inverse of a matrix instead of 
+##computing it repeatedly.
 
-Below are a pair of functions that are used to create a special object that 
-stores a matrix and caches its inverse.
+##Below are a pair of functions that are used to create a special object that 
+##stores a matrix and caches its inverse.
 
-###This function creates a special **matrix** object that can cache its inverse.
+##This function creates a special **matrix** object that can cache its inverse.
 
 makeCacheMatrix <- function(x = matrix()) {
   inv <- NULL
@@ -16,16 +16,17 @@ makeCacheMatrix <- function(x = matrix()) {
     inv <<- NULL
 
 }
-  get <- function() x
+  get <- function() x {
   setInverse <- function(inverse) inv <<- inverse
   getInverse <- function() inv
   list(set = set, get = get, setInverse = setInverse,getInverse = getInverse)
 
+}
 
-###This function computes the inverse of the special**matrix** created by 
-###**makeCacheMatrix** above. Given if the inverse has already been calculated 
-###and the matrix has not changed, 
-###then it should retrieve the inverse from the cache.
+##This function computes the inverse of the special**matrix** created by 
+##**makeCacheMatrix** above. Given if the inverse has already been calculated 
+##and the matrix has not changed, 
+##then it should retrieve the inverse from the cache.
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
@@ -35,8 +36,8 @@ cacheSolve <- function(x, ...) {
     message("getting cached data")
     return(inv)
 }
-  mat <- x$get()
+  mat <- x$get() {
   inv <- solve(mat, ...)
   x$setInverse(inv)
   inv
-
+}
